@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AI Studio</title>
+    <!-- Link to authentication CSS stylesheet -->
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+    <!-- Background gradient -->
+    <div class="auth-background"></div>
+    
+    <!-- Main authentication container -->
+    <div class="auth-container">
+        <!-- Left side - Branding and benefits -->
+        <div class="auth-sidebar">
+            <div class="sidebar-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <svg width="40" height="40" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="#6366F1"/>
+                        <path d="M16 8L24 12V20L16 24L8 20V12L16 8Z" fill="white"/>
+                    </svg>
+                    <span>AI Studio</span>
+                </div>
+                
+                <!-- Welcome message -->
+                <h1>Welcome back to your design studio</h1>
+                <p>Continue creating beautiful spaces with AI-powered tools</p>
+                
+                <!-- Feature list -->
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✨</span>
+                        <span>AI-powered design generation</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">📊</span>
+                        <span>Complete project management</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">💰</span>
+                        <span>Financial tracking & invoicing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right side - Login form -->
+        <div class="auth-form-container">
+            <div class="auth-form-wrapper">
+                <!-- Form header -->
+                <div class="form-header">
+                    <h2>Sign in to your account</h2>
+                    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+                </div>
+                
+                <!-- Login form -->
+                <form id="loginForm" class="auth-form">
+                    <!-- Email input field -->
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                        >
+                    </div>
+                    
+                    <!-- Password input field -->
+                    <div class="form-group">
+                        <div class="label-row">
+                            <label for="password">Password</label>
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required 
+                            placeholder="••••••••"
+                            autocomplete="current-password"
+                        >
+                    </div>
+                    
+                    <!-- Remember me checkbox -->
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="remember" name="remember">
+                            <span>Remember me</span>
+                        </label>
+                    </div>
+                    
+                    <!-- Error message display -->
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+                    
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-full" id="loginButton">
+                        <span class="button-text">Sign in</span>
+                        <span class="button-loader" style="display: none;">
+                            <span class="spinner"></span> Signing in...
+                        </span>
+                    </button>
+                </form>
+                
+                <!-- Alternative login options (future implementation) -->
+                <div class="divider">
+                    <span>Or continue with</span>
+                </div>
+                
+                <div class="social-login">
+                    <button class="btn btn-social">
+                        <svg width="20" height="20" viewBox="0 0 20 20">
+                            <path fill="#4285F4" d="M19.6 10.2c0-.7-.1-1.4-.2-2H10v3.8h5.4c-.2 1.2-1 2.2-2.1 2.9v2.5h3.4c2-1.8 3.1-4.5 3.1-7.2z"/>
+                            <path fill="#34A853" d="M10 20c2.9 0 5.3-1 7.1-2.6l-3.4-2.5c-1 .6-2.2 1-3.7 1-2.8 0-5.2-1.9-6.1-4.5H.3v2.6C2.1 17.9 5.8 20 10 20z"/>
+                            <path fill="#FBBC05" d="M3.9 11.9c-.2-.6-.3-1.3-.3-1.9s.1-1.3.3-1.9V5.5H.3C-.1 6.7-.2 8.3-.2 10s.1 3.3.5 4.5l3.6-2.6z"/>
+                            <path fill="#EA4335" d="M10 4c1.6 0 3 .5 4.1 1.6l3.1-3.1C15.3.9 12.9 0 10 0 5.8 0 2.1 2.1.3 5.5l3.6 2.6C4.8 5.9 7.2 4 10 4z"/>
+                        </svg>
+                        Google
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Footer link back to landing page -->
+            <div class="auth-footer">
+                <a href="/" class="back-link">← Back to homepage</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Link to authentication JavaScript -->
+    <script src="../js/auth.js"></script>
+</body>
+</html>
+

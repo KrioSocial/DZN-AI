@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Studio</title>
+    <!-- Link to dashboard CSS stylesheet -->
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <!-- Main dashboard container -->
+    <div class="dashboard-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <!-- Logo -->
+            <div class="sidebar-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="8" fill="#6366F1"/>
+                    <path d="M16 8L24 12V20L16 24L8 20V12L16 8Z" fill="white"/>
+                </svg>
+                <span>AI Studio</span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="sidebar-nav">
+                <a href="/dashboard/index.html" class="nav-item active">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="/dashboard/clients.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Clients</span>
+                    <span class="nav-badge">3</span>
+                </a>
+                <a href="/dashboard/projects.html" class="nav-item">
+                    <span class="nav-icon">🏗️</span>
+                    <span class="nav-text">Projects</span>
+                </a>
+                <a href="/dashboard/designs.html" class="nav-item">
+                    <span class="nav-icon">🎨</span>
+                    <span class="nav-text">AI Designs</span>
+                    <span class="nav-badge ai">AI</span>
+                </a>
+                <a href="/dashboard/products.html" class="nav-item">
+                    <span class="nav-icon">🛋️</span>
+                    <span class="nav-text">Products</span>
+                </a>
+                <a href="/dashboard/invoices.html" class="nav-item">
+                    <span class="nav-icon">💰</span>
+                    <span class="nav-text">Finance</span>
+                </a>
+                <a href="/dashboard/marketing.html" class="nav-item">
+                    <span class="nav-icon">📣</span>
+                    <span class="nav-text">Marketing</span>
+                    <span class="nav-badge pro">PRO</span>
+                </a>
+                <a href="/dashboard/calendar.html" class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">Calendar</span>
+                </a>
+            </nav>
+            
+            <!-- Subscription info -->
+            <div class="sidebar-footer">
+                <div class="subscription-card">
+                    <div class="subscription-header">
+                        <span class="subscription-tier">Free Plan</span>
+                        <span class="subscription-badge">5/5 AI</span>
+                    </div>
+                    <p class="subscription-text">Upgrade for unlimited AI</p>
+                    <a href="/dashboard/settings.html" class="btn btn-upgrade">Upgrade</a>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Dashboard</h1>
+                    <p class="page-subtitle">Overview of your design studio</p>
+                </div>
+                <div class="topbar-right">
+                    <!-- Search (future implementation) -->
+                    <button class="icon-button">
+                        <span>🔍</span>
+                    </button>
+                    <!-- Notifications -->
+                    <button class="icon-button" id="notificationsBtn">
+                        <span>🔔</span>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <!-- User menu -->
+                    <div class="user-menu">
+                        <button class="user-button" id="userMenuBtn">
+                            <div class="user-avatar">JD</div>
+                            <span class="user-name" id="userName">John Doe</span>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div class="user-dropdown" id="userDropdown" style="display: none;">
+                            <a href="/dashboard/settings.html">Settings</a>
+                            <a href="#" onclick="logout()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🏗️</div>
+                        <div class="stat-content">
+                            <h3 class="stat-value" id="activeProjects">-</h3>
+                            <p class="stat-label">Active Projects</p>
+                        </div>
+                        <span class="stat-trend positive">+2 this month</span>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-content">
+                            <h3 class="stat-value" id="totalClients">-</h3>
+                            <p class="stat-label">Total Clients</p>
+                        </div>
+                        <span class="stat-trend">All time</span>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-content">
+                            <h3 class="stat-value" id="totalRevenue">£-</h3>
+                            <p class="stat-label">Total Revenue</p>
+                        </div>
+                        <span class="stat-trend positive">+15% vs last month</span>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">⏰</div>
+                        <div class="stat-content">
+                            <h3 class="stat-value" id="overdueCount">-</h3>
+                            <p class="stat-label">Overdue Projects</p>
+                        </div>
+                        <span class="stat-trend negative">Need attention</span>
+                    </div>
+                </div>
+                
+                <!-- AI Insights Section -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2>🤖 AI Insights</h2>
+                        <button class="btn btn-text" onclick="refreshInsights()">Refresh</button>
+                    </div>
+                    <div class="insights-container" id="insightsContainer">
+                        <div class="insight-card info">
+                            <div class="insight-icon">💡</div>
+                            <div class="insight-content">
+                                <h4>Welcome to AI Studio!</h4>
+                                <p>Start by adding your first project or generating an AI design concept.</p>
+                            </div>
+                            <button class="insight-action">Get Started</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity & Upcoming Events -->
+                <div class="grid-2-col">
+                    <!-- Recent Projects -->
+                    <div class="section-card">
+                        <div class="section-header">
+                            <h2>Recent Projects</h2>
+                            <a href="/dashboard/projects.html" class="btn btn-text">View All</a>
+                        </div>
+                        <div class="project-list" id="recentProjects">
+                            <div class="empty-state">
+                                <span class="empty-icon">📁</span>
+                                <p>No projects yet</p>
+                                <a href="/dashboard/projects.html" class="btn btn-primary btn-sm">Create Project</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Upcoming Events -->
+                    <div class="section-card">
+                        <div class="section-header">
+                            <h2>Upcoming Events</h2>
+                            <a href="/dashboard/calendar.html" class="btn btn-text">View Calendar</a>
+                        </div>
+                        <div class="events-list" id="upcomingEvents">
+                            <div class="empty-state">
+                                <span class="empty-icon">📅</span>
+                                <p>No upcoming events</p>
+                                <a href="/dashboard/calendar.html" class="btn btn-primary btn-sm">Add Event</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2>Quick Actions</h2>
+                    </div>
+                    <div class="quick-actions">
+                        <a href="/dashboard/projects.html?action=new" class="action-card">
+                            <span class="action-icon">➕</span>
+                            <span class="action-text">New Project</span>
+                        </a>
+                        <a href="/dashboard/clients.html?action=new" class="action-card">
+                            <span class="action-icon">👤</span>
+                            <span class="action-text">Add Client</span>
+                        </a>
+                        <a href="/dashboard/designs.html?action=generate" class="action-card featured">
+                            <span class="action-icon">✨</span>
+                            <span class="action-text">Generate AI Design</span>
+                        </a>
+                        <a href="/dashboard/invoices.html?action=new" class="action-card">
+                            <span class="action-icon">📄</span>
+                            <span class="action-text">Create Invoice</span>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+    
+    <!-- Link to dashboard JavaScript -->
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
+
